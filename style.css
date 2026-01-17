@@ -1,0 +1,41 @@
+.content-wrapper {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+/* Yellow Box */
+.results-panel {
+    background-color: #FFD700; /* Yellow */
+    padding: 20px;
+    width: 300px;
+}
+
+/* Pink Icons */
+.icon-box {
+    background-color: #FF00FF; /* Pink */
+    width: 50px;
+    height: 50px;
+}
+
+/* Purple Labels */
+.name-box {
+    background-color: #A020F0; /* Purple */
+    color: white;
+    flex-grow: 1;
+}
+
+/* Blue Box */
+.options-panel {
+    background-color: #0000FF; /* Blue */
+    color: white;
+    padding: 20px;
+}
+
+/* Green Button */
+.roll-button {
+    background-color: #00FF00; /* Green */
+    display: block;
+    margin: 20px auto;
+    padding: 15px 40px;
+}
