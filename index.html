@@ -1,21 +1,28 @@
-<div class="main-container">
-    <header class="generator-title">
-        <h1>TOWER LOADOUT GENERATOR</h1>
-    </header>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tower Loadout Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-    <div class="content-wrapper">
-        <section class="results-panel">
-            <div class="tower-slot" id="slot-1">
-                <div class="icon-box"></div> <div class="name-box">Tower Name</div> </div>
+    <header class="title-bar">TOWER LOADOUT GENERATOR</header>
+
+    <main class="main-content">
+        <section class="tower-list" id="tower-display">
             </section>
 
-        <aside class="options-panel">
-            <h3>Filters & Restrictions</h3>
-            <div class="option-item">
-                <input type="checkbox" id="exclude-support">
-                <label for="exclude-support">Exclude Support</label> </div>
-        </aside>
-    </div>
+        <aside class="settings-panel">
+            <h3>RESTRICTIONS</h3>
+            <div class="toggle-group">
+                <input type="checkbox" id="no-support">
+                <label for="no-support">Exclude Support Towers</label>
+            </div>
+            </aside>
+    </main>
 
-    <button class="roll-button" onclick="generateLoadout()">ROLL LOADOUT</button>
-</div>
+    <button class="roll-btn" onclick="generateLoadout()">ROLL LOADOUT</button>
+
+    <script src="script.js"></script>
+</body>
