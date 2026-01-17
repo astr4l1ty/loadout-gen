@@ -11,7 +11,7 @@ const TOWERS = [
     { name: "Toxic Gunner", type: "exclusive", icon: "toxic.png" }
 ];
 
-const FARM = { name: "Farm", type: "eco", icon: "https://cdn.discordapp.com/attachments/1390748385644122182/1462177980569620691/latest.png?ex=696d3edc&is=696bed5c&hm=5a09731d68d6788e72cfa2ba860d13097c08910acfa64f52f65dde7a35d3906f&" };
+const FARM = { name: "Farm", type: "eco", icon: "farm.png" };
 const DJ = { name: "DJ Booth", type: "support", icon: "dj.png" };
 const CMDR = { name: "Commander", type: "support", icon: "commander.png" };
 
