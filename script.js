@@ -59,12 +59,11 @@ function render(loadout) {
 
         // CHANGED: <img> tag instead of emoji text
         // REMOVED: font-black and uppercase from the name div
-        slot.innerHTML = `
+            slot.innerHTML = `
             <div class="w-12 h-12 bg-zinc-800 border border-zinc-600 rounded flex items-center justify-center overflow-hidden">
                 <img src="icons/${tower.icon}" alt="${tower.name}" class="w-full h-full object-cover">
             </div>
-            <div class="ml-4 font-medium text-zinc-200">
-                ${tower.name}
+            <div class="ml-4 text-zinc-200"> ${tower.name}
             </div>
         `;
         display.appendChild(slot);
