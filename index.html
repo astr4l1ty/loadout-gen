@@ -2,27 +2,129 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tower Loadout Generator</title>
-    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .tower-slot { background: #2a2a2a; border: 2px solid #444; }
+        .option-box { background: #1f1f1f; border: 1px solid #333; }
+    </style>
 </head>
-<body>
+<body class="bg-zinc-900 text-white min-h-screen flex items-center justify-center p-4">
 
-    <header class="title-bar">TOWER LOADOUT GENERATOR</header>
+    <div class="max-w-4xl w-full">
+        <h1 class="text-3xl font-black text-center mb-8 tracking-widest uppercase border-b-4 border-blue-600 pb-2">
+            Tower Loadout Generator
+        </h1>
 
-    <main class="main-content">
-        <section class="tower-list" id="tower-display">
-            </section>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div id="loadout-display" class="space-y-3 p-4 bg-black rounded-lg border-2 border-zinc-700">
+                <div class="tower-slot flex items-center p-3 rounded shadow-lg">
+                    <div class="w-12 h-12 bg-zinc-700 rounded flex items-center justify-center text-2xl">?</div>
+                    <div class="ml-4 font-bold text-zinc-500 uppercase">Empty Slot</div>
+                </div>
+                </div>
 
-        <aside class="settings-panel">
-            <h3>RESTRICTIONS</h3>
-            <div class="toggle-group">
-                <input type="checkbox" id="no-support">
-                <label for="no-support">Exclude Support Towers</label>
+            <div class="option-box p-6 rounded-lg flex flex-col justify-between">
+                <div class="space-y-4">
+                    <h2 class="text-xl font-bold mb-4 text-blue-400">Settings</h2>
+                    
+                    <label class="flex items-center space-x-3 cursor-pointer">
+                        <input type="checkbox" id="opt-farm" checked class="w-5 h-5 accent-blue-600">
+                        <span>Include Farm</span>
+                    </label>
+
+                    <label class="flex items-center space-x-3 cursor-pointer">
+                        <input type="checkbox" id="opt-support" checked class="w-5 h-5 accent-blue-600">
+                        <span>Include 1 Support (DJ/Cmdr)</span>
+                    </label>
+
+                    <label class="flex items-center space-x-3 cursor-pointer">
+                        <input type="checkbox" id="opt-both" class="w-5 h-5 accent-blue-600">
+                        <span>Include Both Supports</span>
+                    </label>
+
+                    <label class="flex items-center space-x-3 cursor-pointer">
+                        <input type="checkbox" id="opt-exclusive" class="w-5 h-5 accent-blue-600">
+                        <span>Include Exclusive Towers</span>
+                    </label>
+                </div>
+
+                <button id="roll-btn" class="mt-8 bg-blue-600 hover:bg-blue-500 text-white font-black py-4 rounded-xl transition-all transform active:scale-95 uppercase tracking-widest shadow-lg shadow-blue-900/20">
+                    Roll Loadout
+                </button>
             </div>
-            </aside>
-    </main>
+        </div>
+    </div>
 
-    <button class="roll-btn" onclick="generateLoadout()">ROLL LOADOUT</button>
+    <script>
+        const TOWERS = [
+            { name: "Scout", type: "basic", icon: "🔫" },
+            { name: "Sniper", type: "basic", icon: "🎯" },
+            { name: "Soldier", type: "basic", icon: "🎖️" },
+            { name: "Minigunner", type: "basic", icon: "🔥" },
+            { name: "Ranger", type: "basic", icon: "🏹" },
+            { name: "Ace Pilot", type: "basic", icon: "✈️" },
+            { name: "Sledger", type: "exclusive", icon: "🔨" },
+            { name: "Gladiator", type: "exclusive", icon: "⚔️" }
+        ];
 
-    <script src="script.js"></script>
+        const FARM = { name: "Farm", type: "eco", icon: "💰" };
+        const DJ = { name: "DJ Booth", type: "support", icon: "🎧" };
+        const CMDR = { name: "Commander", type: "support", icon: "🗣️" };
+
+        function roll() {
+            let loadout = [];
+            let pool = [...TOWERS];
+
+            // Filter Exclusive
+            if (!document.getElementById('opt-exclusive').checked) {
+                pool = pool.filter(t => t.type !== 'exclusive');
+            }
+
+            // Logic for Farm
+            if (document.getElementById('opt-farm').checked) {
+                loadout.push(FARM);
+            }
+
+            // Logic for Supports
+            const bothSupport = document.getElementById('opt-both').checked;
+            const oneSupport = document.getElementById('opt-support').checked;
+
+            if (bothSupport) {
+                loadout.push(DJ, CMDR);
+            } else if (oneSupport) {
+                loadout.push(Math.random() > 0.5 ? DJ : CMDR);
+            }
+
+            // Fill remaining slots
+            while (loadout.length < 5) {
+                let randomTower = pool[Math.floor(Math.random() * pool.length)];
+                if (!loadout.includes(randomTower)) {
+                    loadout.push(randomTower);
+                }
+            }
+
+            // Shuffle and Render
+            render(loadout.slice(0, 5));
+        }
+
+        function render(loadout) {
+            const display = document.getElementById('loadout-display');
+            display.innerHTML = '';
+            loadout.forEach(tower => {
+                display.innerHTML += `
+                    <div class="tower-slot flex items-center p-3 rounded shadow-lg animate-in fade-in zoom-in duration-300">
+                        <div class="w-12 h-12 bg-zinc-800 border border-zinc-600 rounded flex items-center justify-center text-2xl">${tower.icon}</div>
+                        <div class="ml-4 font-black uppercase tracking-tight">${tower.name}</div>
+                    </div>
+                `;
+            });
+        }
+
+        document.getElementById('roll-btn').addEventListener('click', roll);
+        // Initial Roll
+        roll();
+    </script>
 </body>
+</html>
