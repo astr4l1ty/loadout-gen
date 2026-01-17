@@ -3,16 +3,16 @@ const TOWERS = [
     { name: "Scout", type: "basic", icon: "scout.png" },
     { name: "Sniper", type: "basic", icon: "sniper.png" },
     { name: "Soldier", type: "basic", icon: "soldier.png" },
-    { name: "Minigunner", type: "basic", icon: "minigunner.png" },
-    { name: "Ranger", type: "basic", icon: "ranger.png" },
-    { name: "Ace Pilot", type: "basic", icon: "ace.png" },
-    { name: "Sledger", type: "exclusive", icon: "sledger.png" },
-    { name: "Gladiator", type: "exclusive", icon: "gladiator.png" },
-    { name: "Toxic Gunner", type: "exclusive", icon: "toxic.png" }
+    { name: "Commando", type: "basic", icon: "commando.png" },
+    { name: "Railgunner", type: "basic", icon: "railgunner.png" },
+    { name: "Aviator", type: "basic", icon: "aviator.png" },
+    { name: "Sleeter", type: "exclusive", icon: "sleeter.png" },
+    { name: "Hallowboomer", type: "exclusive", icon: "hallowboomer.png" },
+    { name: "Graveyard", type: "exclusive", icon: "graveyard.png" }
 ];
 
 const FARM = { name: "Farm", type: "eco", icon: "farm.png" };
-const DJ = { name: "DJ Booth", type: "support", icon: "dj.png" };
+const DJ = { name: "DJ", type: "support", icon: "dj.png" };
 const CMDR = { name: "Commander", type: "support", icon: "commander.png" };
 
 function roll() {
