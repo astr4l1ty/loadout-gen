@@ -5,10 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tower Loadout Generator</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        .tower-slot { background: #2a2a2a; border: 2px solid #444; }
-        .option-box { background: #1f1f1f; border: 1px solid #333; }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body class="bg-zinc-900 text-white min-h-screen flex items-center justify-center p-4">
 
@@ -19,10 +16,6 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div id="loadout-display" class="space-y-3 p-4 bg-black rounded-lg border-2 border-zinc-700">
-                <div class="tower-slot flex items-center p-3 rounded shadow-lg">
-                    <div class="w-12 h-12 bg-zinc-700 rounded flex items-center justify-center text-2xl">?</div>
-                    <div class="ml-4 font-bold text-zinc-500 uppercase">Empty Slot</div>
-                </div>
                 </div>
 
             <div class="option-box p-6 rounded-lg flex flex-col justify-between">
@@ -57,74 +50,6 @@
         </div>
     </div>
 
-    <script>
-        const TOWERS = [
-            { name: "Scout", type: "basic", icon: "🔫" },
-            { name: "Sniper", type: "basic", icon: "🎯" },
-            { name: "Soldier", type: "basic", icon: "🎖️" },
-            { name: "Minigunner", type: "basic", icon: "🔥" },
-            { name: "Ranger", type: "basic", icon: "🏹" },
-            { name: "Ace Pilot", type: "basic", icon: "✈️" },
-            { name: "Sledger", type: "exclusive", icon: "🔨" },
-            { name: "Gladiator", type: "exclusive", icon: "⚔️" }
-        ];
-
-        const FARM = { name: "Farm", type: "eco", icon: "💰" };
-        const DJ = { name: "DJ Booth", type: "support", icon: "🎧" };
-        const CMDR = { name: "Commander", type: "support", icon: "🗣️" };
-
-        function roll() {
-            let loadout = [];
-            let pool = [...TOWERS];
-
-            // Filter Exclusive
-            if (!document.getElementById('opt-exclusive').checked) {
-                pool = pool.filter(t => t.type !== 'exclusive');
-            }
-
-            // Logic for Farm
-            if (document.getElementById('opt-farm').checked) {
-                loadout.push(FARM);
-            }
-
-            // Logic for Supports
-            const bothSupport = document.getElementById('opt-both').checked;
-            const oneSupport = document.getElementById('opt-support').checked;
-
-            if (bothSupport) {
-                loadout.push(DJ, CMDR);
-            } else if (oneSupport) {
-                loadout.push(Math.random() > 0.5 ? DJ : CMDR);
-            }
-
-            // Fill remaining slots
-            while (loadout.length < 5) {
-                let randomTower = pool[Math.floor(Math.random() * pool.length)];
-                if (!loadout.includes(randomTower)) {
-                    loadout.push(randomTower);
-                }
-            }
-
-            // Shuffle and Render
-            render(loadout.slice(0, 5));
-        }
-
-        function render(loadout) {
-            const display = document.getElementById('loadout-display');
-            display.innerHTML = '';
-            loadout.forEach(tower => {
-                display.innerHTML += `
-                    <div class="tower-slot flex items-center p-3 rounded shadow-lg animate-in fade-in zoom-in duration-300">
-                        <div class="w-12 h-12 bg-zinc-800 border border-zinc-600 rounded flex items-center justify-center text-2xl">${tower.icon}</div>
-                        <div class="ml-4 font-black uppercase tracking-tight">${tower.name}</div>
-                    </div>
-                `;
-            });
-        }
-
-        document.getElementById('roll-btn').addEventListener('click', roll);
-        // Initial Roll
-        roll();
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
