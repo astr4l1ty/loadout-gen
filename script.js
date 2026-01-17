@@ -54,11 +54,9 @@ function render(loadout) {
     loadout.forEach((tower, index) => {
         const slot = document.createElement('div');
         
-        // Removed all potential "bold" or "uppercase" Tailwind classes
         slot.className = "tower-slot flex items-center p-3 rounded shadow-lg animate-pop";
         slot.style.animationDelay = `${index * 0.05}s`;
 
-        // Added explicit "font-normal" and "normal-case" classes
         slot.innerHTML = `
             <div class="w-12 h-12 bg-zinc-800 border border-zinc-600 rounded flex items-center justify-center overflow-hidden">
                 <img src="icons/${tower.icon}" alt="${tower.name}" class="w-full h-full object-contain p-1">
