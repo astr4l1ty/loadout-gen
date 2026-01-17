@@ -11,7 +11,7 @@ const TOWERS = [
     { name: "Toxic Gunner", type: "exclusive", icon: "toxic.png" }
 ];
 
-const FARM = { name: "Farm", type: "eco", icon: "farm.png" };
+const FARM = { name: "Farm", type: "eco", icon: "https://github.com/astr4l1ty/loadout-gen/blob/main/Farm_ingame.png?raw=true" };
 const DJ = { name: "DJ Booth", type: "support", icon: "dj.png" };
 const CMDR = { name: "Commander", type: "support", icon: "commander.png" };
 
