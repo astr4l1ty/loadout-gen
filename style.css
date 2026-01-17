@@ -1,41 +1,31 @@
-.content-wrapper {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
+body { font-family: sans-serif; padding: 20px; background: #f0f0f0; }
+
+.title-bar { 
+    background: red; color: white; padding: 15px; 
+    text-align: center; font-weight: bold; margin-bottom: 20px;
 }
+
+.main-content { display: flex; gap: 20px; justify-content: center; }
 
 /* Yellow Box */
-.results-panel {
-    background-color: #FFD700; /* Yellow */
-    padding: 20px;
-    width: 300px;
+.tower-list { 
+    background: #ffcc00; width: 350px; padding: 20px; 
+    display: flex; flex-direction: column; gap: 10px;
 }
 
-/* Pink Icons */
-.icon-box {
-    background-color: #FF00FF; /* Pink */
-    width: 50px;
-    height: 50px;
-}
-
-/* Purple Labels */
-.name-box {
-    background-color: #A020F0; /* Purple */
-    color: white;
-    flex-grow: 1;
-}
+/* Slot containers (Pink icon + Purple name) */
+.tower-slot { display: flex; align-items: center; gap: 10px; }
+.icon-box { background: #ff00ff; width: 50px; height: 50px; border: 2px solid #000; }
+.name-box { background: #aa00ff; color: white; padding: 10px; flex-grow: 1; }
 
 /* Blue Box */
-.options-panel {
-    background-color: #0000FF; /* Blue */
-    color: white;
-    padding: 20px;
+.settings-panel { 
+    background: blue; color: white; width: 250px; padding: 20px; 
 }
 
 /* Green Button */
-.roll-button {
-    background-color: #00FF00; /* Green */
-    display: block;
-    margin: 20px auto;
-    padding: 15px 40px;
+.roll-btn { 
+    background: #00cc00; color: white; border: none; 
+    padding: 20px 60px; font-size: 1.2rem; cursor: pointer;
+    display: block; margin: 30px auto;
 }
