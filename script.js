@@ -15,7 +15,7 @@ const TOWERS = [
     { name: "Mortar", type: "basic", icon: "mortar.png" },
     { name: "Enforcer", type: "basic", icon: "enforcer.png" },
     { name: "Barracks", type: "basic", icon: "barracks.png" },
-    { name: "Flamethrower", type: "basic", icon: "flame.png" },
+    { name: "Flamethrower", type: "basic", icon: "flamethrower.png" },
     { name: "Marksman", type: "basic", icon: "marks.png" },
     { name: "Plasma Trooper", type: "basic", icon: "plasma.png" },
     { name: "Phaser", type: "basic", icon: "fazer.png" },
